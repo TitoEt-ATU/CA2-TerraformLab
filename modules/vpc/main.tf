@@ -54,7 +54,7 @@ resource "aws_nat_gateway" "nat" {
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.this.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "10.0.0.0/16"
     gateway_id = aws_internet_gateway.igw.id
   }
 
@@ -74,7 +74,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.this.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "10.0.0.0/16"
     nat_gateway_id = aws_nat_gateway.nat.id
   }
 
